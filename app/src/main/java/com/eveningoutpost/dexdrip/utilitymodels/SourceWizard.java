@@ -72,7 +72,7 @@ public class SourceWizard {
             other.addChild(new Item("Medtrum A6 / S7", DexCollectionType.Medtrum, R.drawable.a6_icon));
             other.addChild(new Item("Nightscout Follower", DexCollectionType.NSFollow, R.drawable.nsfollow_icon));
             other.addChild(new Item("Dex Share Follower", DexCollectionType.SHFollow, R.drawable.nsfollow_icon));
-            other.addChild(new Item("Ottai", DexCollectionType.Ottai, R.drawable.ottai_icon));
+            other.addChild(new Item("欧态-小欧生态", DexCollectionType.Ottai, R.drawable.ottai_icon));
             other.addChild(new Item("EverSense", DexCollectionType.NSEmulator, R.drawable.wikimedia_eversense_icon_pbroks13));
         }
     }
