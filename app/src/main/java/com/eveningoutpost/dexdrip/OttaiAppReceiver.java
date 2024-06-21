@@ -41,11 +41,10 @@ public class OttaiAppReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, final Intent intent) {
-        Log.e("yfei","OT intent = "+intent.toString());
         new Thread() {
             @Override
             public void run() {
-                PowerManager.WakeLock wl = JoH.getWakeLock("ottai-receiver", 60000);
+                PowerManager.WakeLock wl = JoH.getWakeLock("Ottai-receiver", 60000);
                 synchronized (lock) {
                     try {
                         Log.d(TAG, "OttaiApp onReceiver: " + intent.getAction());
@@ -68,7 +67,7 @@ public class OttaiAppReceiver extends BroadcastReceiver {
                                 // in future this could have its own data source perhaps instead of follower
                                 if (!Home.get_follower() && DexCollectionType.getDexCollectionType() != DexCollectionType.Ottai &&
                                         !Pref.getBooleanDefaultFalse("external_blukon_algorithm")) {
-                                    Log.e(TAG, "Received ottai data but we are not a follower or emulator receiver");
+                                    Log.e(TAG, "Received Ottai data but we are not a follower or emulator receiver");
                                     return;
                                 }
                                 if (!Home.get_follower()) {

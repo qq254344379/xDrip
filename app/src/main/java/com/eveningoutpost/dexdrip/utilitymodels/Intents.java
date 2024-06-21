@@ -54,7 +54,7 @@ public interface Intents {
     String ACTION_DATABASE = "info.nightscout.client.DBACCESS";
     String LIBRE_ALARM_TO_XDRIP_PLUS = "com.eveningoutpost.dexdrip.FROM_LIBRE_ALARM";
     String XDRIP_PLUS_NS_EMULATOR = "com.eveningoutpost.dexdrip.NS_EMULATOR";
-    String XDRIP_PLUS_OTTAI_APP = "com.eveningoutpost.dexdrip.OT_APP";
+    String XDRIP_PLUS_OTTAI_APP = "com.eveningoutpost.dexdrip.action.OTTAI_APP";
     String BLUEJAY_THINJAM_API = "com.eveningoutpost.dexdrip.THINJAM_API";
     String BLUEJAY_THINJAM_EMIT = "com.eveningoutpost.dexdrip.THINJAM_EMIT";
     // Local Broadcasts

@@ -588,7 +588,7 @@
         </receiver>
         <receiver android:name=".OttaiAppReceiver">
             <intent-filter>
-                <action android:name="com.eveningoutpost.dexdrip.OT_APP" />
+                <action android:name="com.eveningoutpost.dexdrip.action.OTTAI_APP" />
             </intent-filter>
         </receiver>
         <receiver android:name=".receivers.aidex.AidexReceiver">
