@@ -1,27 +1,38 @@
 name: Android CI
-
+ 
 on:
   push:
-    branches: [ "ottai" ]
+    branches: [ ottai ]
   pull_request:
-    branches: [ "ottai" ]
-
+    branches: [ ottai ]
+ 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+ 
     steps:
-    - uses: actions/checkout@v4
-    - name: set up JDK 11
-      uses: actions/setup-java@v3
+    - uses: actions/checkout@v2
+ 
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
       with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: gradle
-        platformVersion: 34
-
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+        java-version: 11
+ 
+    - name: Set up Android SDK
+      uses: android-actions/sdk-manager@v1
+      with:
+        permissions: 777
+        levels: "23,24,25,26,27,28,29,30"
+ 
+    - name: Grant permissions
+      run: chmod +x ./gradlew && chmod -R +x .
+ 
     - name: Build with Gradle
       run: ./gradlew build
+ 
+    - name: Test with Gradle
+      run: ./gradlele test
+ 
+    # Optional: Run static code analysis
+    - name: Static code analysis
+      run: ./gradlew lint
