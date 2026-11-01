@@ -21,13 +21,23 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
+    - name: Decode signing keystore
+      env:
+        KEYSET: ${{ secrets.KEYSET }}
+      run: |
+        echo "$KEYSET" | python3 -c "import sys,base64; p=sys.stdin.read().strip().split('|'); open('gsdelay-keystore.jks','wb').write(base64.b64decode(p[0]))"
+        echo "KEYSTORE_PASSWORD=$(echo "$KEYSET" | cut -d'|' -f2)" >> $GITHUB_ENV
+        echo "KEYSTORE_ALIAS=$(echo "$KEYSET" | cut -d'|' -f3)" >> $GITHUB_ENV
+        echo "KEYSTORE_KEY_PASSWORD=$(echo "$KEYSET" | cut -d'|' -f4)" >> $GITHUB_ENV
+        echo "KEYSTORE_PATH=$(pwd)/gsdelay-keystore.jks" >> $GITHUB_ENV
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: Build with Gradle
-      run: ./gradlew assembleDebug
+    - name: Build signed APK with Gradle
+      run: ./gradlew assembleProdRelease
 
-    - name: Upload APK artifacts
+    - name: Upload signed APK artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: xdrip-silicon-apks
-        path: app/build/outputs/apk/*/debug/*.apk
+        name: xdrip-silicon-signed-apks
+        path: app/build/outputs/apk/prod/release/*.apk
