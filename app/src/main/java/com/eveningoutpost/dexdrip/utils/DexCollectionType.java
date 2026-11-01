@@ -58,7 +58,9 @@ public enum DexCollectionType {
     Mock("Mock"),
     Manual("Manual"),
     LibreReceiver("LibreReceiver"),
-    AidexReceiver("AidexReceiver");
+    AidexReceiver("AidexReceiver"),
+    SiBionicsOfficial("SiBionicsOfficial"),
+    SiBionicsPatched("SiBionicsPatched");
 
     @Getter
     String internalName;
@@ -97,7 +99,7 @@ public enum DexCollectionType {
         Collections.addAll(usesXbridge, DexbridgeWixel, WifiDexBridgeWixel);
         Collections.addAll(usesFiltered, DexbridgeWixel, WifiDexBridgeWixel, DexcomG5, WifiWixel, Follower, Mock); // Bluetooth and Wifi+Bluetooth need dynamic mode
         Collections.addAll(usesLibre, LimiTTer, LibreAlarm, LimiTTerWifi, LibreWifi, LibreReceiver);
-        Collections.addAll(isPassive, NSEmulator, NSFollow, SHFollow, WebFollow, LibreReceiver, UiBased, CLFollow, AidexReceiver);
+        Collections.addAll(isPassive, NSEmulator, NSFollow, SHFollow, WebFollow, LibreReceiver, UiBased, CLFollow, AidexReceiver, SiBionicsOfficial, SiBionicsPatched);
         Collections.addAll(canNotStartStopOrCal, NSFollow, SHFollow, WebFollow, UiBased, CLFollow, Disabled); // Collectors that cannot start/stop sensor or submit calibration
         Collections.addAll(alwaysNativeCal, Follower, GluPro); // always allow calibration entry
         Collections.addAll(usesBattery, BluetoothWixel, DexbridgeWixel, WifiBlueToothWixel, WifiDexBridgeWixel, Follower, LimiTTer, LibreAlarm, LimiTTerWifi, LibreWifi); // the wifi uploader battery is separate
@@ -230,6 +232,8 @@ public enum DexCollectionType {
                 return MedtrumCollectionService.class;
             case Follower:
             case LibreReceiver:
+            case SiBionicsOfficial:
+            case SiBionicsPatched:
                 return DoNothingService.class;
             case NSFollow:
                 return NightscoutFollowService.class;
@@ -298,6 +302,9 @@ public enum DexCollectionType {
             case AidexReceiver:
             case LibreReceiver:
                 return "Other App";
+            case SiBionicsOfficial:
+            case SiBionicsPatched:
+                return "SiBionics";
             case WifiWixel:
                 return "Network G4";
             case LimiTTer:

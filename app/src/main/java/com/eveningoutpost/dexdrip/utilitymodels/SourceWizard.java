@@ -57,6 +57,8 @@ public class SourceWizard {
             other.addChild(new Item("CareSens Air", DexCollectionType.NSEmulator, R.drawable.caresens_air_icon_image));
             other.addChild(new Item("Medtrum A6 / S7", DexCollectionType.Medtrum, R.drawable.a6_icon));
             other.addChild(new Item("SmartGuide", DexCollectionType.GluPro,R.drawable.smartguide_jamorham));
+            other.addChild(new Item(gs(R.string.sibionics_official_source), DexCollectionType.SiBionicsOfficial, R.drawable.wikimedia_question_mark));
+            other.addChild(new Item(gs(R.string.sibionics_patched_source), DexCollectionType.SiBionicsPatched, R.drawable.wikimedia_question_mark));
             other.addChild(new Item("Nightscout Follower", DexCollectionType.NSFollow, R.drawable.nsfollow_icon));
             other.addChild(new Item("Dex Share Follower", DexCollectionType.SHFollow, R.drawable.nsfollow_icon));
             //

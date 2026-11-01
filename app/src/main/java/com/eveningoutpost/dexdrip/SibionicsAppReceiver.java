@@ -11,6 +11,7 @@ import com.eveningoutpost.dexdrip.models.JoH;
 import com.eveningoutpost.dexdrip.models.Sensor;
 import com.eveningoutpost.dexdrip.models.UserError.Log;
 import com.eveningoutpost.dexdrip.utilitymodels.Intents;
+import com.eveningoutpost.dexdrip.utils.DexCollectionType;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,6 +36,20 @@ public class SibionicsAppReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, final Intent intent) {
+        // Only process the broadcast when the matching SiBionics source is
+        // selected in the data source list (like AidexReceiver / LibreReceiver).
+        final String sourceName;
+        switch (DexCollectionType.getDexCollectionType()) {
+            case SiBionicsOfficial:
+                sourceName = "SiBionicsOfficial";
+                break;
+            case SiBionicsPatched:
+                sourceName = "SiBionicsPatched";
+                break;
+            default:
+                Log.d(TAG, "Received SiBionics broadcast, but no SiBionics source selected as collector.");
+                return;
+        }
         new Thread() {
             @Override
             public void run() {
@@ -63,7 +78,7 @@ public class SibionicsAppReceiver extends BroadcastReceiver {
                             final long date = bundle.getLong("date", 0L);
                             final String direction = bundle.getString("direction");
                             if (!Double.isNaN(sgv) && date > 0) {
-                                insertReading(sgv, direction, date);
+                                insertReading(sgv, direction, date, sourceName);
                             }
                         }
 
@@ -78,7 +93,8 @@ public class SibionicsAppReceiver extends BroadcastReceiver {
                                     if ("sgv".equals(obj.optString("type"))) {
                                         insertReading(obj.getDouble("sgv"),
                                                 obj.optString("direction", null),
-                                                obj.getLong("date"));
+                                                obj.getLong("date"),
+                                                sourceName);
                                     }
                                 } catch (Exception e) {
                                     Log.e(TAG, "Got exception processing entries: " + e);
@@ -95,9 +111,9 @@ public class SibionicsAppReceiver extends BroadcastReceiver {
         }.start();
     }
 
-    private void insertReading(double sgv, String direction, long date) {
+    private void insertReading(double sgv, String direction, long date, final String sourceName) {
         try {
-            final BgReading bgr = BgReading.bgReadingInsertFromG5(sgv, date, "SiBionics");
+            final BgReading bgr = BgReading.bgReadingInsertFromG5(sgv, date, sourceName);
             if (bgr != null) {
                 if (direction != null) {
                     try {
@@ -106,12 +122,12 @@ public class SibionicsAppReceiver extends BroadcastReceiver {
                         Log.d(TAG, "Could not map direction: " + direction);
                     }
                 }
-                bgr.source_info = "SiBionics";
+                bgr.source_info = sourceName;
                 bgr.save();
-                Log.d(TAG, "Inserted SiBionics reading: " + sgv + " @ " + JoH.dateTimeText(date));
+                Log.d(TAG, "Inserted " + sourceName + " reading: " + sgv + " @ " + JoH.dateTimeText(date));
             }
         } catch (Exception e) {
-            Log.e(TAG, "Error inserting SiBionics reading: " + e);
+            Log.e(TAG, "Error inserting " + sourceName + " reading: " + e);
         }
     }
 }

@@ -1549,4 +1549,6 @@
     <string name="volume_profile_high">高血糖值</string>
     <string name="glupro_disconnected">断开连接</string>
     <string name="glupro_connected">已经连接</string>
+    <string name="sibionics_official_source">硅基官方广播</string>
+    <string name="sibionics_patched_source">硅基补丁版广播</string>
 </resources>
