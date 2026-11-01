@@ -57,15 +57,23 @@ public class SibionicsAppReceiver extends BroadcastReceiver {
                 synchronized (lock) {
                     try {
                         if ((intent == null) || (intent.getAction() == null)) return;
-                        if (!Intents.XDRIP_PLUS_SI_APP.equals(intent.getAction())) return;
+                        final String action = intent.getAction();
+                        final boolean isPatched = Intents.XDRIP_PLUS_SI_APP.equals(action);
+                        final boolean isOfficial = Intents.XDRIP_PLUS_SIBIONICS_SIB_APP.equals(action);
+                        if (!isPatched && !isOfficial) return;
 
                         final Bundle bundle = intent.getExtras();
                         if (bundle == null) return;
 
-                        final String code = bundle.getString("manongCode");
-                        if ((code == null) || (!code.equals(MANONG_CODE))) {
-                            Log.d(TAG, "Ignoring SiBionics broadcast with invalid manongCode");
-                            return;
+                        // manongCode is only present on the patched-app broadcast
+                        // (Aab.smali); the official app AAPS-sharing broadcast does
+                        // not carry it, so only enforce it for the patched action.
+                        if (isPatched) {
+                            final String code = bundle.getString("manongCode");
+                            if ((code == null) || (!code.equals(MANONG_CODE))) {
+                                Log.d(TAG, "Ignoring SiBionics broadcast with invalid manongCode");
+                                return;
+                            }
                         }
 
                         if (!Sensor.isActive()) {

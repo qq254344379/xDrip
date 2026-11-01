@@ -340,6 +340,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="com.eveningoutpost.dexdrip.SI_APP" />
+                <action android:name="com.diyaps.sharing.SIBIO_APP" />
             </intent-filter>
         </receiver>
 
