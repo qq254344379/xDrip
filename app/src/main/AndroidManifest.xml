@@ -335,7 +335,15 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/note_search" />
 
-        <receiver android:name=".AutoStart">
+                <receiver
+            android:name=".SibionicsAppReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.eveningoutpost.dexdrip.SI_APP" />
+            </intent-filter>
+        </receiver>
+
+<receiver android:name=".AutoStart">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
