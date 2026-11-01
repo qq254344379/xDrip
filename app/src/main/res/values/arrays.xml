@@ -21,6 +21,8 @@
         <item>Companion App</item>
         <item>SmartGuide</item>
         <item>GlucoRx/Aidex App</item>
+        <item>@string/sibionics_official_source</item>
+        <item>@string/sibionics_patched_source</item>
         <item>CareLink Follower</item>
         <item>@string/disable_collection</item>
     </string-array>
@@ -46,6 +48,8 @@
         <item>UiBased</item>
         <item>GluPro</item>
         <item>AidexReceiver</item>
+        <item>SiBionicsOfficial</item>
+        <item>SiBionicsPatched</item>
         <item>CLFollower</item>
         <item>Disabled</item>
     </string-array>
