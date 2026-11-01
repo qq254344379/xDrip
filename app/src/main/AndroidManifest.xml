@@ -349,6 +349,7 @@
             <intent-filter>
                 <action android:name="cn.diyaps.sharing.OT_APP" />
                 <action android:name="info.nightscout.androidaps.action.OTTAI_APP" />
+                <action android:name="com.eveningoutpost.dexdrip.OT_APP" />
             </intent-filter>
         </receiver>
 

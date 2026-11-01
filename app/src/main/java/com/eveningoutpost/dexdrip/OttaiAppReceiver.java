@@ -57,7 +57,8 @@ public class OttaiAppReceiver extends BroadcastReceiver {
                     try {
                         if ((intent == null) || (intent.getAction() == null)) return;
                         if (!Intents.XDRIP_PLUS_OTTAI_APP.equals(intent.getAction())
-                                && !Intents.XDRIP_PLUS_OTTAI_APP_INTL.equals(intent.getAction())) return;
+                                && !Intents.XDRIP_PLUS_OTTAI_APP_INTL.equals(intent.getAction())
+                                && !Intents.XDRIP_PLUS_OTTAI_XDRIP_APP.equals(intent.getAction())) return;
 
                         final Bundle bundle = intent.getExtras();
                         if (bundle == null) return;

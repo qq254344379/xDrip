@@ -67,6 +67,7 @@ public interface Intents {
     // officially shared Ottai app feeds both xDrip+ and AAPS.
     String XDRIP_PLUS_OTTAI_APP = "cn.diyaps.sharing.OT_APP";                                    // Ottai China
     String XDRIP_PLUS_OTTAI_APP_INTL = "info.nightscout.androidaps.action.OTTAI_APP";            // Ottai International
+    String XDRIP_PLUS_OTTAI_XDRIP_APP = "com.eveningoutpost.dexdrip.OT_APP";                     // Ottai -> xDrip+ direct
     
     // Send to external decoder
     String XDRIP_PLUS_LIBRE_DATA = "com.eveningoutpost.dexdrip.LIBRE_DATA";
