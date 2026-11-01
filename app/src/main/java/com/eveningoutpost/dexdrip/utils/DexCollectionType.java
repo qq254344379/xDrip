@@ -60,7 +60,8 @@ public enum DexCollectionType {
     LibreReceiver("LibreReceiver"),
     AidexReceiver("AidexReceiver"),
     SiBionicsOfficial("SiBionicsOfficial"),
-    SiBionicsPatched("SiBionicsPatched");
+    SiBionicsPatched("SiBionicsPatched"),
+    OttaiReceiver("OttaiReceiver");
 
     @Getter
     String internalName;
