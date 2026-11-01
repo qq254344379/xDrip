@@ -2097,4 +2097,5 @@
     <string name="the_transmitter_id_you_have_entered_is_incorrect">您輸入的發射器 ID 或配對碼不正確，將無法使用。\n\n請再次確認詳細資訊，然後重試。</string>
     <string name="sibionics_official_source">矽基官方廣播</string>
     <string name="sibionics_patched_source">矽基補丁版廣播</string>
+    <string name="ottai_source">歐態廣播</string>
 </resources>

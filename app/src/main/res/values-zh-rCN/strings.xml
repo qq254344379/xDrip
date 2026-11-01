@@ -2039,4 +2039,5 @@
     <string name="the_transmitter_id_you_have_entered_is_incorrect">您输入的发射器ID或配对码不正确，无法使用。\n\n请仔细核对相关信息，然后重试。</string>
     <string name="sibionics_official_source">硅基官方广播</string>
     <string name="sibionics_patched_source">硅基补丁版广播</string>
+    <string name="ottai_source">欧态广播</string>
 </resources>

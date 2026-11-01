@@ -61,6 +61,12 @@ public interface Intents {
 
     // SiBionics (硅基动感) patched official app broadcast
     String XDRIP_PLUS_SI_APP = "com.eveningoutpost.dexdrip.SI_APP";
+
+    // Ottai (欧态) official app broadcast, same actions as used by AAPS
+    // (AAPS DataReceiver: Intents.OTTAI_APP / OTTAI_APP_CN), so a patched or
+    // officially shared Ottai app feeds both xDrip+ and AAPS.
+    String XDRIP_PLUS_OTTAI_APP = "cn.diyaps.sharing.OT_APP";                                    // Ottai China
+    String XDRIP_PLUS_OTTAI_APP_INTL = "info.nightscout.androidaps.action.OTTAI_APP";            // Ottai International
     
     // Send to external decoder
     String XDRIP_PLUS_LIBRE_DATA = "com.eveningoutpost.dexdrip.LIBRE_DATA";

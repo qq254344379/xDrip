@@ -1551,4 +1551,5 @@
     <string name="glupro_connected">已经连接</string>
     <string name="sibionics_official_source">硅基官方广播</string>
     <string name="sibionics_patched_source">硅基补丁版广播</string>
+    <string name="ottai_source">欧态广播</string>
 </resources>

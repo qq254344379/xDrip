@@ -343,6 +343,15 @@
             </intent-filter>
         </receiver>
 
+                <receiver
+            android:name=".OttaiAppReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="cn.diyaps.sharing.OT_APP" />
+                <action android:name="info.nightscout.androidaps.action.OTTAI_APP" />
+            </intent-filter>
+        </receiver>
+
 <receiver android:name=".AutoStart">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
