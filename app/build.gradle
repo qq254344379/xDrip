@@ -153,8 +153,23 @@ android {
         enabled = true
     }
 
+    signingConfigs {
+        release {
+            def ksPath = System.getenv("KEYSTORE_PATH")
+            if (ksPath != null) {
+                storeFile file(ksPath)
+                storePassword System.getenv("KEYSTORE_PASSWORD")
+                keyAlias System.getenv("KEYSTORE_ALIAS")
+                keyPassword System.getenv("KEYSTORE_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
+            if (System.getenv("KEYSTORE_PATH") != null) {
+                signingConfig signingConfigs.release
+            }
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
