@@ -58,6 +58,9 @@ public interface Intents {
     String BLUEJAY_THINJAM_EMIT = "com.eveningoutpost.dexdrip.THINJAM_EMIT";
     // Local Broadcasts
     String HOME_STATUS_ACTION = "com.eveningoutpost.dexdrip.HOME_STATUS_ACTION";
+
+    // SiBionics (硅基动感) patched official app broadcast
+    String XDRIP_PLUS_SI_APP = "com.eveningoutpost.dexdrip.SI_APP";
     
     // Send to external decoder
     String XDRIP_PLUS_LIBRE_DATA = "com.eveningoutpost.dexdrip.LIBRE_DATA";
